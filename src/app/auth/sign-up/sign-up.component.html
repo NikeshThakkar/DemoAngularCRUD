@@ -1,0 +1,73 @@
+<div class="simple-login-container">
+  <h2>Sign-Up Form</h2>
+  <form [formGroup]="signUpForm">
+    <div class="row">
+      <div class="col-md-12 form-group">
+          <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+          <span class="text-danger"
+            *ngIf="(signUpFormControl.firstName.touched || submitted) && signUpFormControl.firstName.errors?.required">
+            First Name is required
+     </span>
+        </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 form-group">
+        <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+        <span class="text-danger"
+          *ngIf="(signUpFormControl.lastName.touched || submitted) && signUpFormControl.lastName.errors?.required">
+          Last Name is required
+        </span>
+      </div>
+</div>
+  <div class="row">
+      <div class="col-md-12 form-group">
+          <input type="text" class="form-control" formControlName="email" placeholder="Email">
+        <span class="text-danger"
+          *ngIf="(signUpFormControl.email.touched || submitted) && signUpFormControl.email.errors?.required">
+          Email is required
+        </span>
+        <span class="text-danger"
+                 *ngIf="signUpFormControl.email.touched && signUpFormControl.email.errors?.email">
+                 Enter a valid email address
+          </span>
+        </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12 form-group">
+          <input type="password" formControlName="password" placeholder="Password" class="form-control">
+        <span class="text-danger"
+          *ngIf="(signUpFormControl.password.touched || submitted) && signUpFormControl.password.errors?.required">
+          Password is required
+        </span>
+        <span class="text-danger"
+         *ngIf="signUpFormControl.password.touched && signUpFormControl?.password?.invalid">
+         Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+         letter and 1 number
+        </span>
+        </div>
+  </div>
+  <div class="row">
+    <div class=" col-md-12 form-group">
+      <!-- <label for="profileImg">profileImg</label> -->
+      <input
+          formControlName="profileImg"
+          id="profileImg"
+          type="file"
+          class="form-control"
+          placeholder="Select profile picture"
+          (change)="onFileChange($event)">
+      <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+          <div *ngIf="f.file.errors.required">File is required.</div>
+      </div> -->
+  </div>
+   
+  <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+  </div>
+  <div class="row">
+      <div class="col-md-12 form-group">
+        <button type="submit" class="btn btn-block btn-login" (click)="onSubmit()">submit</button> 
+      </div>
+  </div>
+</form>
+<span>If you  have a account please <a [routerLink]= "['']">SignIn</a></span>
+</div>

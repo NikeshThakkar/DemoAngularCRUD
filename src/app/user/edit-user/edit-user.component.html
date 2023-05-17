@@ -1,0 +1,54 @@
+<div class="simple-login-container">
+    <h2>Edit user Form</h2>
+    <form [formGroup]="editUserForm">
+      <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+            <span class="text-danger"
+              *ngIf="(editUserFormControl.firstName.touched || submitted) && editUserFormControl.firstName.errors?.required">
+              First Name is required
+       </span>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+          <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+          <span class="text-danger"
+            *ngIf="(editUserFormControl.lastName.touched || submitted) && editUserFormControl.lastName.errors?.required">
+            Last Name is required
+          </span>
+        </div>
+  </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="text" class="form-control" formControlName="email" placeholder="Email">
+          <span class="text-danger"
+            *ngIf="(editUserFormControl.email.touched || submitted) && editUserFormControl.email.errors?.required">
+            Email is required
+          </span>
+          <span class="text-danger"
+                   *ngIf="editUserFormControl.email.touched && editUserFormControl.email.errors?.email">
+                   Enter a valid email address
+            </span>
+          </div>
+    </div>
+    <div class="row">
+      <div class=" col-md-12 form-group">
+        <input
+            formControlName="profileImg"
+            id="profileImg"
+            type="file"
+            class="form-control"
+            placeholder="Select profile picture"
+            (change)="onFileChange($event)">
+    </div>
+     
+    <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+          <button type="submit" class="btn btn-block btn-login" (click)="onSubmit()">submit</button> 
+        </div>
+    </div>
+  </form>
+  </div>

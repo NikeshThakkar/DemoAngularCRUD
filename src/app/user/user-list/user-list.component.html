@@ -1,0 +1,74 @@
+<div class="main">
+    <div class="div">
+         User List
+              <button *ngIf="isToken" (click)="logout()">Logout</button>
+    </div>
+    <div class="div">
+        <table>
+            <tr>
+                <th>Profile Image</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let user of UsersData">
+                <td><img [src]= "user?.datavalue?.profileimg" height="100px" width="100px" /> </td>
+                <td>{{user.dataValues.firstName}} </td>
+                <td>{{user.dataValues.lastName}}</td>
+                <td> {{user.dataValues.email}}</td>
+                <td> <button (click)="OnEdit(mymodal, user)">Edit</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<ng-template #mymodal let-modal>
+    <div style="align-self: end;">
+
+        <button (click)="closeModel()">X</button>
+    </div>
+    <div class="modal-body" >
+        <div class="simple-login-container">
+            <h2>Edit user Form</h2>
+            <form [formGroup]="editUserForm">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+                    <span class="text-danger"
+                      *ngIf="(editUserFormControl.firstName.touched || submitted) && editUserFormControl.firstName.errors?.required">
+                      First Name is required
+               </span>
+                  </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+                  <span class="text-danger"
+                    *ngIf="(editUserFormControl.lastName.touched || submitted) && editUserFormControl.lastName.errors?.required">
+                    Last Name is required
+                  </span>
+                </div>
+          </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" formControlName="email" placeholder="Email">
+                  <span class="text-danger"
+                    *ngIf="(editUserFormControl.email.touched || submitted) && editUserFormControl.email.errors?.required">
+                    Email is required
+                  </span>
+                  <span class="text-danger"
+                           *ngIf="editUserFormControl.email.touched && editUserFormControl.email.errors?.email">
+                           Enter a valid email address
+                    </span>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                  <button type="submit" class="btn btn-block btn-login" (click)="onUpdateSubmit()">submit</button> 
+                </div>
+            </div>
+          </form>
+          </div>
+    </div>
+</ng-template>

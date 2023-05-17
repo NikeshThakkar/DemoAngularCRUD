@@ -1,0 +1,38 @@
+<div class="simple-login-container">
+    <h2>Login Form</h2>
+<form [formGroup]="signInForm">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="text" class="form-control" formControlName="email" placeholder="Email">
+            <span class="text-danger"
+                 *ngIf="(signInFormControl.email.touched || submitted) && signInFormControl.email.errors?.required">
+                 Email is required
+            </span>
+          <span class="text-danger"
+                 *ngIf="signInFormControl.email.touched && signInFormControl.email.errors?.email">
+                 Enter a valid email address
+          </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="password" formControlName="password"  placeholder="Enter your Password" class="form-control">
+            <span class="text-danger"
+                 *ngIf="(signInFormControl?.password?.touched || submitted) && signInFormControl?.password?.errors?.required">
+                 Password is required
+            </span>
+            <span class="text-danger"
+                *ngIf="signInFormControl?.password?.touched && signInFormControl?.password?.invalid">
+                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                letter and 1 number
+            </span> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <button type="submit" class="btn btn-block btn-login" (click)="onSubmit()">submit</button> 
+        </div>
+    </div>
+</form>
+<span>If you Don't have a account please <a [routerLink]= "['/signUp']">SignUp</a></span>
+</div>

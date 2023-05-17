@@ -1,0 +1,71 @@
+{
+    "extends": ["airbnb-typescript"],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "indent": ["error", 2],
+      "quotes": ["warn", "single"],
+      "semi": ["error", "always"],
+      "prefer-const": "error",
+      "camelcase": "off",
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          "selector": "variable",
+          "format": ["camelCase", "UPPER_CASE"]
+        },
+        {
+          "selector": "function",
+          "format": ["camelCase"]
+        },
+        {
+          "selector": "typeLike",
+          "format": ["PascalCase"]
+        }
+      ],
+      "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/explicit-member-accessibility": [
+        "error",
+        {
+          "accessibility": "explicit",
+          "overrides": {
+            "parameterProperties": "off"
+          }
+        }
+      ],
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "angular/component-selector": [
+        "error",
+        {
+          "type": "element",
+          "prefix": "app",
+          "style": "kebab-case"
+        }
+      ],
+      "angular/directive-selector": [
+        "error",
+        {
+          "type": "attribute",
+          "prefix": "app",
+          "style": "camelCase"
+        }
+      ],
+      "angular/no-input-rename": "off",
+      "angular/no-output-rename": "off",
+      "angular/component-class-suffix": [
+        "error",
+        {
+          "suffixes": ["Component", "Page"]
+        }
+      ],
+      "angular/prefer-on-push-component-change-detection": "error"
+    }
+  }
+  
